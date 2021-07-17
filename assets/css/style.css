@@ -20,10 +20,6 @@ menu {
     margin-right: 20px;
 }
 
-.questions {
-    text-align: left;
-}
-
 .choice {
     background-color: darkgreen;
     border: solid;
@@ -43,6 +39,13 @@ menu {
     text-align: center; 
 }
 
+#feedback {
+    color: gray;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: center;
+}
+
 #start-btn {
     border: solid navy;
     border-radius: 20px;
@@ -51,4 +54,8 @@ menu {
     color: white;
     font-weight: bolder;
     font-size: 1.5rem;
+}
+
+#start-btn:hover {
+    background-color: lightsteelblue;
 }
