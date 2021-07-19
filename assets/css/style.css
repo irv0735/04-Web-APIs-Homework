@@ -37,6 +37,10 @@ menu {
     background-color: lightgreen;
 }
 
+.highscore-body {
+    text-align: center;
+}
+
 #game-box {
     width: 50%;
     margin: 125px auto;
@@ -62,4 +66,10 @@ menu {
 
 #start-btn:hover {
     background-color: lightsteelblue;
+}
+
+#score-list {
+    background-color: lightblue;
+    width: 150px;
+    text-align: center;
 }

@@ -129,6 +129,10 @@ function postQuiz() {
 
 // Function to store the high score and entered initials
 function storeScore(s, i) {
+    let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
+    if (storedScoreList !== null){
+        scoreList = storedScoreList;
+    }
     let newEntry = {
         score: s,
         initials: i
