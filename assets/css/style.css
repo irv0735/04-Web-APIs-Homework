@@ -20,6 +20,10 @@ menu {
     margin-right: 20px;
 }
 
+.submit-button {
+    margin-left: 20px;
+}
+
 .choice {
     background-color: darkgreen;
     border: solid;

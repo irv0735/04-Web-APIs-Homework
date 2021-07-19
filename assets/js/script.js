@@ -6,6 +6,7 @@ let currentQuest = 0;
 let endDetect = false;
 let currentOptions = [];
 let timeLeft = 100;
+let scoreList = [];
 const contentArray = [
     quest1 = {
         question: "What in the heck is this?",
@@ -17,46 +18,46 @@ const contentArray = [
         options: ["1", "2", "3"],
         answer: 0
     },
-    quest3 = {
-        question: "Enter the 3rd question here", 
-        options: ["1", "2", "3"],
-        answer: 0
-    }, 
-    quest4 = {
-        question: "Enter 4th question here",
-        options: ["1", "2", "3"],
-        answer: 0
-    }, 
-    quest5 = {
-        question: "Enter 5th question here", 
-        options: ["1", "2", "3"],
-        answer: 0
-    }, 
-    quest6 = {
-        question: "Enter 6th question here",
-        options: ["1", "2", "3"],
-        answer: 0
-    }, 
-    quest7 = {
-        question: "Enter 7th question here",
-        options: ["1", "2", "3"],
-        answer: 0
-    },
-    quest8 = {
-        question: "Enter 8th question here", 
-        options: ["1", "2", "3"],
-        answer: 0
-    },
-    quest9 = {
-        question: "Enter 9th question here",
-        options: ["1", "2", "3"],
-        answer: 0
-    },
-    quest10 = {
-        question: "Enter 10th question here",
-        options: ["1", "2", "3"],
-        answer: 0
-    }
+    // quest3 = {
+    //     question: "Enter the 3rd question here", 
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // }, 
+    // quest4 = {
+    //     question: "Enter 4th question here",
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // }, 
+    // quest5 = {
+    //     question: "Enter 5th question here", 
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // }, 
+    // quest6 = {
+    //     question: "Enter 6th question here",
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // }, 
+    // quest7 = {
+    //     question: "Enter 7th question here",
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // },
+    // quest8 = {
+    //     question: "Enter 8th question here", 
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // },
+    // quest9 = {
+    //     question: "Enter 9th question here",
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // },
+    // quest10 = {
+    //     question: "Enter 10th question here",
+    //     options: ["1", "2", "3"],
+    //     answer: 0
+    // }
 ];
 
 
@@ -75,7 +76,9 @@ function kickOff() {
                 timeExpired();
             }
         } else {
+            countdown.innerHTML = timeLeft;
             clearInterval(timeInterval);
+            setTimeout(function() {}, 1000);
             postQuiz();
         }
     }, 1000);
@@ -84,7 +87,55 @@ function kickOff() {
 // Function to pull up screen to enter initials if quiz completed prior to time running out
 function postQuiz() {
     clearBox();
+    let endTitle = document.createElement("H2");
+    endTitle.innerHTML = "All Done!"
+    gameBox.appendChild(endTitle);
+    let finalScoreStatment = document.createElement("p");
+    finalScoreStatment.innerHTML = "Your final score: " + timeLeft;
+    gameBox.appendChild(finalScoreStatment);
+    
+    //Creating the Form submission for Initials
+    let form = document.createElement("form");
+    form.setAttribute("method", "POST");
+
+    let initials = document.createElement("input");
+    initials.setAttribute("type", "text");
+    let label = document.createElement("label");
+    label.setAttribute("for", "initials");
+    label.innerHTML = "Enter your Initials: ";
+    let input = document.createElement("input");
+    input.setAttribute("type", "submit");
+    input.setAttribute("class", "submit-button")
+
+    form.appendChild(label);
+    form.appendChild(initials);
+    form.appendChild(input);
+    gameBox.appendChild(form);
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        let enteredIn = initials.value.trim();
+        if (enteredIn === "") {
+            window.alert("Please don't try to break me. Enter initials only. (-5 points)");
+            timeLeft -= 5;
+            postQuiz();
+            return;
+        }
+        storeScore(timeLeft, enteredIn);
+        location.href = "././highscores.html";
+    });
+    
 };
+
+// Function to store the high score and entered initials
+function storeScore(s, i) {
+    let newEntry = {
+        score: s,
+        initials: i
+    };
+    scoreList.push(newEntry);
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
+}
 
 // Function called if time runs out (Lose with no score)
 function timeExpired() {
@@ -116,7 +167,11 @@ function incorrectChoice() {
         feedback.innerHTML = "";
     }, 1750);
     timeLeft -= 5; 
-    loadQuestion(currentQuest);
+    if (currentQuest < contentArray.length){
+        loadQuestion(currentQuest);
+    } else (
+        endDetect = true
+    )
 };
 
 // Function called when start game button is clicked
@@ -178,5 +233,3 @@ document.getElementById("start-btn").addEventListener("click", startGame);
 // Logic flow
 
 
-
-// pseudo-code 
