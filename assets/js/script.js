@@ -120,11 +120,11 @@ function postQuiz() {
             timeLeft -= 5;
             postQuiz();
             return;
+        } else {
+            storeScore(timeLeft, enteredIn);
+            location.href = "././highscores.html";
         }
-        storeScore(timeLeft, enteredIn);
-        location.href = "././highscores.html";
     });
-    
 };
 
 // Function to store the high score and entered initials
@@ -240,7 +240,6 @@ function loadQuestion(index) {
 
 document.getElementById("start-btn").addEventListener("click", startGame);
 
-// -----------------<>------------------//
-// Logic flow
+
 
 

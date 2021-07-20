@@ -21,7 +21,18 @@ menu {
 }
 
 .submit-button {
-    margin-left: 20px;
+    border: solid navy;
+    border-radius: 20px;
+    background-color: blue;
+    padding: 10px 30px;
+    margin: 5px 30px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.25rem;
+}
+
+.submit-button:hover {
+    background-color: lightsteelblue;
 }
 
 .choice {
