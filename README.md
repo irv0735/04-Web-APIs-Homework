@@ -18,10 +18,14 @@ Overall Functionality:
 * Score and initials are saved in local storage and the user is directed to the high score page
 * Option to reset the scores or Try again is presented
 
+
+Screenshot: 
+![Coding Quiz Screenshot](./assets/irv0735.github.io_04-Web-APIs-Homework---Coding-Quiz_.png)
+
 Links: 
 
-Repo - 
-"Live Site" - 
+* Repo - https://github.com/irv0735/04-Web-APIs-Homework---Coding-Quiz
+* "Live Site" - https://irv0735.github.io/04-Web-APIs-Homework---Coding-Quiz/
 
 
 
