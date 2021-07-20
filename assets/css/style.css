@@ -65,6 +65,24 @@ menu {
     font-weight: bolder;
     font-size: 1.25rem;
 }
+.buttons button:hover {
+    background-color: lightsteelblue;
+}
+
+.try-again {
+    border: solid navy;
+    border-radius: 20px;
+    background-color: blue;
+    padding: 10px 30px;
+    margin: 5px 30px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.25rem;
+}
+
+.try-again:hover {
+    background-color: lightsteelblue;
+}
 
 #game-box {
     width: 50%;

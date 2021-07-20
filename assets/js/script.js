@@ -5,7 +5,7 @@ let feedback = document.getElementById("feedback")
 let currentQuest = 0;
 let endDetect = false;
 let currentOptions = [];
-let timeLeft = 100;
+let timeLeft = 10;
 let scoreList = [];
 const contentArray = [
     quest1 = {
@@ -18,46 +18,46 @@ const contentArray = [
         options: ["1", "2", "3"],
         answer: 0
     },
-    // quest3 = {
-    //     question: "Enter the 3rd question here", 
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // }, 
-    // quest4 = {
-    //     question: "Enter 4th question here",
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // }, 
-    // quest5 = {
-    //     question: "Enter 5th question here", 
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // }, 
-    // quest6 = {
-    //     question: "Enter 6th question here",
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // }, 
-    // quest7 = {
-    //     question: "Enter 7th question here",
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // },
-    // quest8 = {
-    //     question: "Enter 8th question here", 
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // },
-    // quest9 = {
-    //     question: "Enter 9th question here",
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // },
-    // quest10 = {
-    //     question: "Enter 10th question here",
-    //     options: ["1", "2", "3"],
-    //     answer: 0
-    // }
+    quest3 = {
+        question: "Enter the 3rd question here", 
+        options: ["1", "2", "3"],
+        answer: 0
+    }, 
+    quest4 = {
+        question: "Enter 4th question here",
+        options: ["1", "2", "3"],
+        answer: 0
+    }, 
+    quest5 = {
+        question: "Enter 5th question here", 
+        options: ["1", "2", "3"],
+        answer: 0
+    }, 
+    quest6 = {
+        question: "Enter 6th question here",
+        options: ["1", "2", "3"],
+        answer: 0
+    }, 
+    quest7 = {
+        question: "Enter 7th question here",
+        options: ["1", "2", "3"],
+        answer: 0
+    },
+    quest8 = {
+        question: "Enter 8th question here", 
+        options: ["1", "2", "3"],
+        answer: 0
+    },
+    quest9 = {
+        question: "Enter 9th question here",
+        options: ["1", "2", "3"],
+        answer: 0
+    },
+    quest10 = {
+        question: "Enter 10th question here",
+        options: ["1", "2", "3"],
+        answer: 0
+    }
 ];
 
 
@@ -147,6 +147,13 @@ function timeExpired() {
     let lossStatement = document.createElement("H2");
     lossStatement.innerHTML = "Sorry, you need to go back and study... This course might not be for you."
     gameBox.appendChild(lossStatement);
+    let button = document.createElement("button");
+    button.setAttribute("class", "try-again");
+    button.innerHTML = "Try Again";
+    gameBox.appendChild(button);
+    button.addEventListener("click", function(){
+        location.href = "././index.html";
+    });
 };
 
 // Function called if correct answer is chosen
