@@ -41,6 +41,31 @@ menu {
     text-align: center;
 }
 
+.highscore-li {
+    width: 100%;
+    padding: 5px 10px;
+    color: darkred;
+    margin: 0 3px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    border: solid navy;
+    border-radius: 20px;
+    background-color: blue;
+    padding: 10px 30px;
+    margin: 5px 30px;
+    color: white;
+    font-weight: bolder;
+    font-size: 1.25rem;
+}
+
 #game-box {
     width: 50%;
     margin: 125px auto;
@@ -69,7 +94,11 @@ menu {
 }
 
 #score-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: lightblue;
-    width: 150px;
+    width: 100%;
     text-align: center;
 }
+

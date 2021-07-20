@@ -7,31 +7,34 @@ function sortScores() {
 
 function renderScores() {
     if (scoreList !== null) {
-        console.log("valid entry");
-        console.log(scoreList);
+        sortScores();
+        for (i=0; i<scoreList.length; i++) {
+            let li = document.createElement("li");
+            li.setAttribute("class", "highscore-li");
+            li.textContent = scoreList[i].initials + " - " + scoreList[i].score;
+            orderedList.appendChild(li);
+        } 
     } else {
-        console.log("Empty List");
+        document.getElementById("score-list").innerHTML = "";
     }
-    for (i=0; i<scoreList.length; i++) {
-        let li = document.createElement("li")
-        li.textContent = scoreList[i].initials + " - " + scoreList[i].score;
-        orderedList.appendChild(li);
-    } 
 }
 
 function resetScores() {
-
-    clearStorage();
+    localStorage.clear();
+    scoreList = null;
     renderScores();
 }
 
 
-// Event listeners to Reset Scores or Go Back buttons
+// Event listeners 
+document.getElementById("start-over").addEventListener("click", function(){
+    location.href = "././index.html";
+});
 
-// Reset
+
+document.getElementById("reset").addEventListener("click", function(){
+    resetScores();
+});
 
 
-// Go Back
-
-sortScores();
 renderScores();
