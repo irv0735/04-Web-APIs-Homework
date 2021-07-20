@@ -5,9 +5,23 @@ This site presents the user with a Code Quiz Challenge. When they press Start, t
 
 I added a bonus deduction if they fail to enter their initials when prompted. 
 
-After entering their initials, they are sent to a high-score page to see how they stack up. An option to start over or reset the score list is available. 
+After entering their initials, they are sent to a high-score page to see how they stack up. Scores are presented in order from highest to lowest. An option to start over or reset the score list is available. 
 
 Scores are stored in "local-storage".
+
+Overall Functionality: 
+* 2 HTML pages, 2 Javascript files, 1 CSS file
+* When site is visited, the main page gives an option to view the high scores page or start the quiz
+* Series of 10 questions are presented
+* If a question is answered incorrectly, 10 seconds is deducted from the timer
+* If all questions are answered before time runs out, the player can enter their initials (Penalty of 5 seconds every time they click submit without entering info)
+* Score and initials are saved in local storage and the user is directed to the high score page
+* Option to reset the scores or Try again is presented
+
+Links: 
+
+Repo - 
+"Live Site" - 
 
 
 
