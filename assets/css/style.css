@@ -25,12 +25,12 @@ menu {
 }
 
 .choice {
-    background-color: darkgreen;
+    background-color: rgb(70, 116, 70);
+    color: black;
     border: solid;
     border-radius: 5px;
-    padding-left: 10px;
     margin: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .choice:hover {

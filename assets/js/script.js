@@ -5,58 +5,58 @@ let feedback = document.getElementById("feedback")
 let currentQuest = 0;
 let endDetect = false;
 let currentOptions = [];
-let timeLeft = 10;
+let timeLeft = 100;
 let scoreList = [];
 const contentArray = [
     quest1 = {
-        question: "What in the heck is this?",
-        options: ["a", "b", "c", "d"],
-        answer: 2
+        question: "How many data-types are there?",
+        options: ["1", "4", "5", "6"],
+        answer: 3
     },
     quest2 = {
-        question: "This would be the 2nd question?",
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "What are listed inside the parentheses () in the function definition?",
+        options: ["arguments", "values", "parameters", "variables"],
+        answer: 2
     },
     quest3 = {
-        question: "Enter the 3rd question here", 
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "Presented with: const car = {make: 'Ford', model: 'Mustang', year: '1987'} How would you access 'Ford'?", 
+        options: ["make", "car['make']", "car.make", "2 or 3"],
+        answer: 3
     }, 
     quest4 = {
-        question: "Enter 4th question here",
-        options: ["1", "2", "3"],
+        question: "const dogs = ['lab', 'yorkie', 'border collie', 'great dane']  What would dogs.pop() be and example of?",
+        options: ["method", "variable", "attribute", "array"],
         answer: 0
     }, 
     quest5 = {
-        question: "Enter 5th question here", 
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "How can I return a random integer from 0 to 9?", 
+        options: ["Math.random(9)", "Math.floor(Math.random() * 10)", "Math.floor(Math.random(9))", "Math.floor(10)"],
+        answer: 1
     }, 
     quest6 = {
-        question: "Enter 6th question here",
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "let x = '5'; if (x === 5) {return true} else {return false}; What will be returned?",
+        options: ["true", "false"],
+        answer: 1
     }, 
     quest7 = {
-        question: "Enter 7th question here",
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "What does the reverse() method do?",
+        options: ["returns the value multiplied by (-1)", "returns the last item of an array", "reverses the elements in an array", "runs the loop in reverse order"],
+        answer: 2
     },
     quest8 = {
-        question: "Enter 8th question here", 
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "What does getTime() return?", 
+        options: ["The current local time of the PC?", "The GMT time?", "The number of millisconds since January 1, 1970"],
+        answer: 2
     },
     quest9 = {
-        question: "Enter 9th question here",
-        options: ["1", "2", "3"],
+        question: "I can access any HTML element in the DOM using javascript.",
+        options: ["True", "False"],
         answer: 0
     },
     quest10 = {
-        question: "Enter 10th question here",
-        options: ["1", "2", "3"],
-        answer: 0
+        question: "A 'var' and 'let' declaration are equivalent.",
+        options: ["True", "False"],
+        answer: 1
     }
 ];
 
@@ -173,11 +173,11 @@ function correctChoice() {
 // Function called if incorrect answer is chosen
 function incorrectChoice() {
     currentQuest++;
-    feedback.innerHTML = "Wrong...That cost you 5 seconds";
+    feedback.innerHTML = "Wrong...That cost you 10 seconds";
     setTimeout(function() {
         feedback.innerHTML = "";
     }, 1750);
-    timeLeft -= 5; 
+    timeLeft -= 10; 
     if (currentQuest < contentArray.length){
         loadQuestion(currentQuest);
     } else (
