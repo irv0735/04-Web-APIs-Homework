@@ -1,10 +1,18 @@
 let scoreList = JSON.parse(localStorage.getItem("scoreList"));
 let orderedList = document.querySelector("#score-list");
 
+/**
+ * Sorts the scores that are in local storage
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function sortScores() {
     scoreList.sort((a, b) => (a.score < b.score) ? 1 : (a.score === b.score) ? ((a.initials > b.initials) ? 1 : -1) : -1);
 }
 
+/**
+ * Renders the scores in the ordered list item
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function renderScores() {
     if (scoreList !== null) {
         sortScores();
@@ -19,6 +27,10 @@ function renderScores() {
     }
 }
 
+/**
+ * Resets the scores, clearing local storage
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function resetScores() {
     localStorage.clear();
     scoreList = null;
@@ -26,7 +38,7 @@ function resetScores() {
 }
 
 
-// Event listeners 
+// Event listeners for the Start-Over and Reset Buttons
 document.getElementById("start-over").addEventListener("click", function(){
     location.href = "././index.html";
 });
@@ -37,4 +49,6 @@ document.getElementById("reset").addEventListener("click", function(){
 });
 
 
+
+// Renders the scores when the page is loaded. 
 renderScores();

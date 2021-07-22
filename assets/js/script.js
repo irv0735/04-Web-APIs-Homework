@@ -64,7 +64,10 @@ const contentArray = [
 // -----------------<>------------------//
 // Functions
 
-// Main loop to keep track of timer
+/**
+ * Maintains the countdown timer
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function kickOff() {
     countdown.innerHTML = timeLeft;
     let timeInterval = setInterval(function() {
@@ -84,7 +87,10 @@ function kickOff() {
     }, 1000);
 };
 
-// Function to pull up screen to enter initials if quiz completed prior to time running out
+/**
+ * Pulls up screen to enter initials
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function postQuiz() {
     clearBox();
     let endTitle = document.createElement("H2");
@@ -112,22 +118,28 @@ function postQuiz() {
     form.appendChild(input);
     gameBox.appendChild(form);
 
+    // Event listener for the button that was created above. 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let enteredIn = initials.value.trim();
         if (enteredIn === "") {
-            window.alert("Please don't try to break me. Enter initials only. (-5 points)");
+            window.alert("Please don't try to break me. Enter initials. (-5 points)");
             timeLeft -= 5;
             postQuiz();
-            return;
+            return;  // Exits the event listener function
         } else {
             storeScore(timeLeft, enteredIn);
-            location.href = "././highscores.html";
+            location.href = "././highscores.html"; // Navigate to separate page
         }
     });
 };
 
-// Function to store the high score and entered initials
+/**
+ * Store the high score and entered initials
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ * @param {number} s score - which is represented by the timeLeft variable
+ * @param {string} i initials - entered in the form created by postQuiz()
+ */
 function storeScore(s, i) {
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
     if (storedScoreList !== null){
@@ -141,7 +153,10 @@ function storeScore(s, i) {
     localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
 
-// Function called if time runs out (Lose with no score)
+/**
+ * Display message that time has expired and give them an option to try again
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function timeExpired() {
     clearBox();
     let lossStatement = document.createElement("H2");
@@ -151,12 +166,15 @@ function timeExpired() {
     button.setAttribute("class", "try-again");
     button.innerHTML = "Try Again";
     gameBox.appendChild(button);
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function(){  //Event listener for the try again button created by the function
         location.href = "././index.html";
     });
 };
 
-// Function called if correct answer is chosen
+/**
+ * Displays an indication that they got the quesiton correct and calls the next question
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function correctChoice() {
     currentQuest++;
     feedback.innerHTML = "Correct!";
@@ -170,7 +188,10 @@ function correctChoice() {
     )
 };
 
-// Function called if incorrect answer is chosen
+/**
+ * Displays an indication that they got the question incorrect, deducts time/points and calls the next question
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function incorrectChoice() {
     currentQuest++;
     feedback.innerHTML = "Wrong...That cost you 10 seconds";
@@ -185,19 +206,29 @@ function incorrectChoice() {
     )
 };
 
-// Function called when start game button is clicked
+/**
+ * Clears the welcome screen, starts the countdown and loads the first question
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function startGame() {
     clearBox();
     kickOff();
     loadQuestion(currentQuest);
 };
 
-// Clears the div for new content to be added
+/**
+ * Clears the div for new content to be added
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ */
 function clearBox() {
     document.getElementById("game-box").innerHTML = "";
 };
 
-// Render question and options
+/**
+ * Render the question and options (assigning a data-attribute to the correct option)
+ * @author Nate Irvin <nathan.a.irvin@gmail.com>
+ * @param {number} index - represents the index of the current question in the available question array 
+ */
 function loadQuestion(index) {
     clearBox();
     let quest = document.createElement("H2");
@@ -237,7 +268,6 @@ function loadQuestion(index) {
 
 // -----------------<>------------------//
 // Event listeners
-
 document.getElementById("start-btn").addEventListener("click", startGame);
 
 
